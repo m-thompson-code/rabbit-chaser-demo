@@ -4,4 +4,29 @@ body {
     margin: 0;
     padding: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
+    background: rgba(0,0,0,.86);
+}
+
+button {
+    outline-color: white;
+    font-family: inherit; /* For all browsers */
+    font-size: 100%; /* For all browsers */
+    line-height: 1.15; /* For all browsers */
+    margin: 0; /* Firefox and Safari have margin */
+    overflow: visible; /* Edge hides overflow */
+    text-transform: none; /* Firefox inherits text-transform */
+    -webkit-appearance: button; /* Safari otherwise prevents some styles */
+
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+button::-moz-focus-inner {
+    border-style: none;
+    padding: 0;
+}
+
+button:-moz-focusring {
+    outline: 1px dotted ButtonText;
 }

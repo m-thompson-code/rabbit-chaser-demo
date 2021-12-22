@@ -1,0 +1,197 @@
+@use "sass:math";
+
+@function strip-units($number) {
+    @return $number / ($number * 0 + 1);
+}
+
+$size: 64px;
+$rabbit-wrapper: $size * 0.8125;
+$rabbit-size: $size * .75;
+$hole-top-height: $size * .25;
+$hole-height: $size - $rabbit-wrapper;
+
+
+$arrow-h-margin: 43px;
+$arrow-v-margin: 7px;
+
+app-arrow-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transform-origin: center;
+    margin-left: -$arrow-h-margin;
+    margin-top: -$arrow-v-margin;
+    z-index: 1;
+    height: 36px;
+    width: auto;
+    z-index: 1;
+    transition: opacity 200ms;
+    pointer-events: none;
+    opacity: 0;
+}
+
+app-arrow-icon.active {
+    opacity: .5;
+}
+
+.right-arrow {
+    margin-left: $arrow-h-margin;
+    transform: translate(-50%, -50%) scale(-1);
+    margin-top: $arrow-v-margin;
+}
+
+:host {
+    cursor: pointer;
+    background:inherit;
+
+    display: flex;
+    flex-direction: column;
+
+    height: $size;
+    width: $size;
+
+    position: relative;
+
+    border-radius: 50% / #{math.div($hole-top-height, 2)};
+
+    transition: outline-color 200ms;
+    outline-color: transparent;
+    outline-offset: 0;
+
+    margin: 12px;
+
+    .hole-top, .button-top {
+        outline-color: transparent;
+        transition: outline-color 200ms;
+    }
+}
+
+:host:focus {
+    .hole-top, .button-top {
+        outline: 2px solid rgba(white, .1);
+    }
+
+    outline-offset: 0;
+    outline: 2px solid rgba(white, .1);
+}
+:host:hover {
+    .hole-top, .button-top {
+        outline: 2px solid rgba(white, .5);
+    }
+
+    outline-offset: 0;
+    outline: 2px solid rgba(white, .5);
+
+    app-arrow-icon.active {
+        opacity: 1;
+    }
+}
+
+:host:active {
+    .hole-top, .button-top {
+        outline: 2px solid white;
+    }
+
+    outline-offset: 0;
+    outline: 2px solid white;
+}
+
+:host:focus-visible {
+    .button-top {
+        outline-color: transparent;
+        outline-offset: 0.25rem;
+    }
+
+    .hole-top {
+        outline-color: transparent;
+        outline-offset: 0.25rem;
+    }
+
+    transition: outline-color 0;
+    outline-offset: 0.25rem;
+    outline: 0.25rem solid #2491ff;
+
+    app-arrow-icon.active {
+        opacity: 1;
+    }
+}
+:host:hover:focus-visible {
+    outline: 0.25rem solid lighten(#2491ff, 30%);
+}
+:host:active:focus-visible {
+    .hole-top {
+        outline-color: transparent;
+    }
+
+    outline: 0.25rem solid white;
+}
+
+.rabbit-hole-wrapper {
+    position: relative;
+
+    height: $rabbit-wrapper;
+    width: $size;
+    overflow: hidden;
+    border-radius: 50% / #{math.div($hole-top-height, 2)};
+}
+
+.rabbit-wrapper {
+    position: absolute;
+    bottom: -$size;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: $rabbit-wrapper;
+    width: $size;
+
+    transition: all .5s;
+}
+.rabbit-wrapper.show-rabbit {
+    bottom: 0;
+}
+app-rabbit-icon {
+    height: $rabbit-size;
+    width: $rabbit-size;
+    
+    color: #fafafa;
+
+    transition: all .5s;
+}
+
+.hole {
+    position: absolute;
+    bottom: 0;
+    background-color: #666;
+    height: $hole-top-height;
+    width: $size;
+    border-radius: 50%;
+}
+
+.button-top {
+    bottom: unset;
+    top: 0;
+    background: none;
+}
+
+.hole-top {
+    bottom: $hole-height;
+}
+
+.hole-middle {
+    position: absolute;
+    bottom: 0;
+
+    background-color: #444;
+    height: $hole-height + $hole-top-height;
+    width: $size;
+
+    border-radius: 50% / #{math.div($hole-top-height, 2)};
+}
+
+.hole-bottom {
+    background-color: #444;
+    box-shadow:0px 0px #{$size * 0.125} rgba(0,0,0,0.75)
+}

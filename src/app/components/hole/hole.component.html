@@ -1,0 +1,16 @@
+<app-arrow-icon #leftArrow [ngClass]="{ 'active': rabbitState.cameFromLeft && rabbitState.rabbitIsInHole }"></app-arrow-icon>
+<app-arrow-icon #rightArrow [ngClass]="{ 'right-arrow': true, 'active': rabbitState.cameFromRight && rabbitState.rabbitIsInHole }"></app-arrow-icon>
+
+<div class="hole hole-bottom"></div>
+
+<div class="hole-middle"></div>
+
+<div class="hole hole-top"></div>
+
+<div class="rabbit-hole-wrapper">
+    <div #rabbit [ngClass]="{'rabbit-wrapper': true, 'show-rabbit': rabbitState.rabbitIsInHole}">
+        <app-rabbit-icon></app-rabbit-icon>
+    </div>
+</div>
+
+<div class="button-top hole"></div>

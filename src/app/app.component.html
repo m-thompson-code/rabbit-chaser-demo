@@ -1,4 +1,7 @@
 <div class="holes">
-  <div *ngFor="let rabbitState of rc.rabbitStates; let i = index" (click)="guess(i)" [ngClass]="{hole: true, 'with-rabbit': false}"></div>
-  <!-- <div *ngFor="let rabbitState of rc.rabbitStates; let i = index" (click)="guess(i)" [ngClass]="{hole: true, 'with-rabbit': rabbitState}"></div> -->
+  <button app-hole *ngFor="let rabbitState of rc.rabbitStates; trackBy: customTrackBy; let i = index" #hole (click)="guess(i)" [rabbitState]="rabbitState"></button>
 </div>
+<!-- 
+<div class="holes">
+  <button app-hole *ngFor="let rabbitState of rc.rabbitStates; trackBy: customTrackBy; let i = index" #hole (click)="guess(i)" [rabbitState]="caughtAtIndex === i"></button>
+</div> -->

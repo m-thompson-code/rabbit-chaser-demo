@@ -1,0 +1,36 @@
+:host {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    border-width: 0;
+
+    display: block;
+    
+    height: 100%;
+    width: 100%;
+
+    stroke-width: 0;
+    stroke: currentColor;
+    fill: currentColor;// this allows fill to be set by color instead of fill
+
+    color: inherit;// default color is set in styles.scss
+    fill: inherit;// default color is set in styles.scss
+}
+
+svg {
+    display: block;
+
+    height: inherit;
+    width: inherit;
+
+    stroke-width: inherit;
+    stroke: currentColor;
+    fill: currentColor;
+
+    pointer-events: none;
+}
