@@ -1,0 +1,12 @@
+<button
+    app-hole
+    *ngFor="
+    let rabbitState of rabbitChaser.rabbitStates;
+    trackBy: indexTrackBy;
+    let i = index
+    "
+    #hole
+    (click)="guess(i)"
+    [rabbitState]="rabbitState"
+    [selectable]="true"
+></button>

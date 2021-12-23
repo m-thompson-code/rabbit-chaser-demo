@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RabbitChaser, RandomRabbitChaser } from "rabbit-chaser";
+// import { RabbitChaser, RandomRabbitChaser } from "rabbit-chaser";
 
 declare const RC: any;
 
@@ -12,7 +12,8 @@ export class AppComponent {
   title = 'rabbit-chaser-demo';
 
   // rc: RandomRabbitChaser;
-  rc: RabbitChaser;
+  // rc: RabbitChaser;
+  defaultRabbitStates = [false, true, true, true, false, false, false, false, false];
 
   caughtAtIndex?: number;
 
@@ -22,22 +23,22 @@ export class AppComponent {
     // this.rc = new RandomRabbitChaser(size, index);
     // this.rc = new RabbitChaser(size);
     // this.rc = new RabbitChaser(new Array(size).fill(true));
-    this.rc = new RabbitChaser([false, true, true, true, false, false, false, false, false]);
+    // this.rc = new RabbitChaser([false, true, true, true, false, false, false, false, false]);
   }
 
-  guess(index: number): void {
-    this.getDistanceFromAnswer(index);
-    this.rc.checkIfRabbitAtIndex(index);
+  // guess(index: number): void {
+  //   this.getDistanceFromAnswer(index);
+  //   this.rc.checkIfRabbitAtIndex(index);
 
-    if (this.rc.rabbitsAreCaught()) {
-      setTimeout(() => {
-        alert(`You caught the rabbit with ${this.rc.guesses} guesses`);
-      }, 2000);
-      this.caughtAtIndex = index;
-    }
+  //   if (this.rc.rabbitsAreCaught()) {
+  //     setTimeout(() => {
+  //       alert(`You caught the rabbit with ${this.rc.guesses} guesses`);
+  //     }, 2000);
+  //     this.caughtAtIndex = index;
+  //   }
 
-    this.rc.setNextRabbitStates();
-  }
+  //   this.rc.setNextRabbitStates();
+  // }
 
   getDistanceFromAnswer(index: number): void {
     // const rabbitIndex = this.rc.getRabbitIndex();
@@ -79,13 +80,11 @@ export class AppComponent {
     // console.log("BOILING hot");
   }
 
-  handleKeydown(keydownEvent: KeyboardEvent, index: number): void {
-    if(keydownEvent.which === 13){
-      this.guess(index);
-    }
-  }
+  // customTrackBy(index: number, _: unknown): number {
+  //   return index;
+  // }
 
-  customTrackBy(index: number, _: unknown): number {
-    return index;
+  test(): void {
+    console.log("test");
   }
 }

@@ -67,7 +67,7 @@ app-arrow-icon.active {
     }
 }
 
-:host:focus {
+:host:not([selectable=false]):focus {
     .hole-top, .button-top {
         outline: 2px solid rgba(white, .1);
     }
@@ -75,7 +75,7 @@ app-arrow-icon.active {
     outline-offset: 0;
     outline: 2px solid rgba(white, .1);
 }
-:host:hover {
+:host:not([selectable=false]):hover {
     .hole-top, .button-top {
         outline: 2px solid rgba(white, .5);
     }
@@ -88,7 +88,7 @@ app-arrow-icon.active {
     }
 }
 
-:host:active {
+:host:not([selectable=false]):active {
     .hole-top, .button-top {
         outline: 2px solid white;
     }
@@ -97,7 +97,7 @@ app-arrow-icon.active {
     outline: 2px solid white;
 }
 
-:host:focus-visible {
+:host:not([selectable=false]):focus-visible, :host[selectable=false]:focus-visible {
     .button-top {
         outline-color: transparent;
         outline-offset: 0.25rem;
@@ -116,10 +116,10 @@ app-arrow-icon.active {
         opacity: 1;
     }
 }
-:host:hover:focus-visible {
+:host:not([selectable=false]):hover:focus-visible {
     outline: 0.25rem solid lighten(#2491ff, 30%);
 }
-:host:active:focus-visible {
+:host:not([selectable=false]):active:focus-visible, :host[selectable=false]:active:focus-visible {
     .hole-top {
         outline-color: transparent;
     }
@@ -194,4 +194,30 @@ app-rabbit-icon {
 .hole-bottom {
     background-color: #444;
     box-shadow:0px 0px #{$size * 0.125} rgba(0,0,0,0.75)
+}
+
+.disabled-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    height: 100%;
+    width: 100%;
+    opacity: .5;
+    transition: opacity 200ms;
+}
+:host:hover {
+    .disabled-overlay {
+        opacity: .85;
+    }
+}
+:host:focus-visible {
+    .disabled-overlay {
+        opacity: .85;
+    }
+}
+:host:active {
+    .disabled-overlay {
+        opacity: .95;
+    }
 }

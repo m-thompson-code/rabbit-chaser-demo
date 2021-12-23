@@ -14,3 +14,7 @@
 </div>
 
 <div class="button-top hole"></div>
+
+<div *ngIf="!selectable" class="disabled-overlay">
+    <app-cross-out-icon></app-cross-out-icon>
+</div>

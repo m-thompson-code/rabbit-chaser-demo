@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, SimpleChanges, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, ElementRef, HostBinding, Input, OnInit, SimpleChanges, ViewChild, ViewContainerRef } from '@angular/core';
 import { RabbitState } from 'rabbit-chaser';
 
 @Component({
@@ -8,6 +8,10 @@ import { RabbitState } from 'rabbit-chaser';
 })
 export class HoleComponent implements OnInit {
   @Input() rabbitState!: RabbitState;
+
+  @HostBinding('attr.selectable')
+  @Input() selectable?: boolean;
+
   @ViewChild('rabbit', { static: true }) private readonly rabbit?: ElementRef<HTMLDivElement>;
   @ViewChild('leftArrow', { static: true, read: ViewContainerRef }) private readonly leftArrow?: ViewContainerRef;
   @ViewChild('rightArrow', { static: true, read: ViewContainerRef }) private readonly rightArrow?: ViewContainerRef;
